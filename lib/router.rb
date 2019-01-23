@@ -6,11 +6,11 @@ class Router
   def initialize
     @controller =  Controller.new
   end #ainsi, un "Router.new" lancé par app.rb va créer automatiquement une instance "@controller"
-  def string_chiader(object) #fonction qui permet de faire un effet progressif de l'affache de chaque lettre
+  def string_chiader(object,n=0.08) #fonction qui permet de faire un effet progressif de l'affache de chaque lettre
     i=0
     while(object[i]!=nil)
       print object[i]
-      sleep(0.08)
+      sleep(n)
       i+=1
     end
     puts
@@ -19,6 +19,42 @@ class Router
 
   def perform #rappelle-toi que l'on fait "Router.new.perform" dans app.rb => après initialize, on définit perform.
     string_chiader ("########BIENVENUE DANS THE GOSSIP PROJECT########")
+    string_chiader("                                                #                  #
+                                               ###                ###
+                                              #####              #####
+                                             #######            #######
+                                         #################################
+                                        ##                               ##
+                                       ###                               ###
+                                      ####      #                  #     #####
+                                     #####     ###                ###    ######
+                                    ######    #####              #####   #######
+                                    ######   #######            #######  #######
+                                     #####    #####              #####   ######
+                                      ####     ###                ###    #####
+                                       ###      #       #####      #     ####
+                                        ##              #####            ##
+                                         #              #####            #
+                                         ##                             ##
+                                          ##                           ##
+                                            ############################
+                                            #############################
+                                         ###          #########         ###
+                                       #######################################
+                                       #######                         #######
+                                       #### ##  THP              Day13 ## ####
+                                       ###  #############################  ###
+                                       ###  ##                         ##  ###
+                                        ### ##            THE          ## ###
+                                          ####           Gossip        ####
+                                           ###           Project       ###
+                                            ##                         ##
+                                            #############################
+                                            #############################
+                                          #####                       ####
+                                        #######      BON COURAGE !    ######
+                                     ##########                       ########
+#########################################################################################   ",0.004)
     while true
 
       #on affiche le menu
@@ -42,7 +78,7 @@ class Router
         string_chiader("Quel potin veux-tu supprimer ?")
         @controller.index_gossips
         @controller.destroy_gossips
-        
+
 
       when 4
         string_chiader ("À bientôt !")
