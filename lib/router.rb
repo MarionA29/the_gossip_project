@@ -8,15 +8,15 @@ class Router
   end #ainsi, un "Router.new" lancé par app.rb va créer automatiquement une instance "@controller"
 
   def perform #rappelle-toi que l'on fait "Router.new.perform" dans app.rb => après initialize, on définit perform.
-    puts "BIENVENUE DANS THE GOSSIP PROJECT"
+    puts "########BIENVENUE DANS THE GOSSIP PROJECT########"
     while true
 
       #on affiche le menu
-      puts "Que veux tu faire ?"
+      puts "Quest-ce que tu veut faire ?"
       puts "1. Je veux créer un gossip"
       puts "2. Je veux afficher tous les potins"
-      puts "3. Je veux supprimer un potin  "
-      puts "4. Je veux quitter l'app"
+      puts "3. Je veux supprimer un potin "
+      puts "4. Je veux quitter le project"
       params = gets.chomp.to_i #on attend le choix de l'utilisateur
 
       case params #en fonction du choix
@@ -25,12 +25,14 @@ class Router
         @controller.create_gossip
         break
       when 2
-        puts "Tu as choisi l'option 2"
+        puts "Voici tous les potins"
         @controller.index_gossips
         break
       when 3
-        puts "Tu as choisi l'option 3"
-        #redirection
+        puts "Quel potin veux-tu supprimer ?"
+        @controller.index_gossips
+        @controller.destroy_gossips
+        break
       when 4
         puts "À bientôt !"
         break #ce "break" permet de sortir de la boucle while. C'est même la seule façon d'en sortir.
