@@ -42,6 +42,7 @@ class Router
         string_chiader("Quel potin veux-tu supprimer ?")
         @controller.index_gossips
         @controller.destroy_gossips
+        
 
       when 4
         string_chiader ("À bientôt !")
