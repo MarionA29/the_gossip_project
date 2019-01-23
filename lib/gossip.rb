@@ -28,10 +28,14 @@ class Gossip
     end
 
     def self.destroy(reply)
-       CSV.open("./db/gossip.csv", "wb") do |csv|
+       file= File.open("./db/gossip.csv", "wb")
         @@all_gossips.delete_at(reply)
-          csv << @@all_gossips
-          #csv << @@all_gossips
+        @@all_gossips.each do |element|
+          file.write element
+
+
+
+
         end
     end
 
