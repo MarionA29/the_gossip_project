@@ -1,24 +1,32 @@
 require 'controller'
 
 class Gossip
-  attr_reader :content, :author
+  attr_reader :author, :content
 
-    def initialize(author, content)
-      @content = content
-      @author = author
+    def initialize(params)
+      @author = params.keys.join
+      @content = params.values.join
     end
 
-#méthode save en cours de construction / vérifier si c'est bien ici qu'il faut la mettre
 
     def save
-
+      @hash= Hash.new
+      @hash[@author] = @content
       CSV.open("./db/gossip.csv", "a") do |csv|
-        gossip.each do |a, b|
+        @hash.each do |a, b|
           csv << [a, b]
         end
       end
     end
 
+    def self.all
+      @@all_gossips = []
+      File.open("./db/gossip.csv", "r").each do |line|
+         @@all_gossips << line
+      end
+      return @@all_gossips
+    end
+
 end
 
-#binding.pry
+binding.pry
