@@ -6,7 +6,7 @@ class Router
   def initialize
     @controller =  Controller.new
   end #ainsi, un "Router.new" lancé par app.rb va créer automatiquement une instance "@controller"
-  def string_chiader(object)
+  def string_chiader(object) #fonction qui permet de faire un effet progressif de l'affache de chaque lettre
     i=0
     while(object[i]!=nil)
       print object[i]
@@ -48,7 +48,7 @@ class Router
         break #ce "break" permet de sortir de la boucle while. C'est même la seule façon d'en sortir.
 
       else
-        puts "Ce choix n'existe pas, merci de réessayer" #si l'utilisateur saisit une entrée non prévue, il retourne au début du "while true". C'est pour ça que la boucle est infinie: potentiellement, il peut se gourer jusqu'à la fin des temps :)
+        string_chiader ("Ce choix n'existe pas, merci de réessayer") #si l'utilisateur saisit une entrée non prévue, il retourne au début du "while true". C'est pour ça que la boucle est infinie: potentiellement, il peut se gourer jusqu'à la fin des temps :)
       end
     end
   end
