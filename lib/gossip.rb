@@ -32,10 +32,6 @@ class Gossip
         @@all_gossips.delete_at(reply)
         @@all_gossips.each do |element|
           file.write element
-
-
-
-
         end
     end
 

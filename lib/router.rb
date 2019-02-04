@@ -6,39 +6,86 @@ class Router
   def initialize
     @controller =  Controller.new
   end #ainsi, un "Router.new" lancé par app.rb va créer automatiquement une instance "@controller"
+  def string_chiader(object,n=0.08) #fonction qui permet de faire un effet progressif de l'affache de chaque lettre
+    i=0
+    while(object[i]!=nil)
+      print object[i]
+      sleep(n)
+      i+=1
+    end
+    puts
+  end
+
 
   def perform #rappelle-toi que l'on fait "Router.new.perform" dans app.rb => après initialize, on définit perform.
-    puts "########BIENVENUE DANS THE GOSSIP PROJECT########"
+    string_chiader ("########BIENVENUE DANS THE GOSSIP PROJECT########")
+    string_chiader("                                                #                  #
+                                               ###                ###
+                                              #####              #####
+                                             #######            #######
+                                         #################################
+                                        ##                               ##
+                                       ###                               ###
+                                      ####      #                  #     #####
+                                     #####     ###                ###    ######
+                                    ######    #####              #####   #######
+                                    ######   #######            #######  #######
+                                     #####    #####              #####   ######
+                                      ####     ###                ###    #####
+                                       ###      #       #####      #     ####
+                                        ##              #####            ##
+                                         #              #####            #
+                                         ##                             ##
+                                          ##                           ##
+                                            ############################
+                                            #############################
+                                         ###          #########         ###
+                                       #######################################
+                                       #######                         #######
+                                       #### ##  THP              Day13 ## ####
+                                       ###  #############################  ###
+                                       ###  ##                         ##  ###
+                                        ### ##            THE          ## ###
+                                          ####           Gossip        ####
+                                           ###           Project       ###
+                                            ##                         ##
+                                            #############################
+                                            #############################
+                                          #####                       ####
+                                        #######      BON COURAGE !    ######
+                                     ##########                       ########
+#########################################################################################   ",0.004)
     while true
 
       #on affiche le menu
-      puts "Quest-ce que tu veut faire ?"
-      puts "1. Je veux créer un gossip"
-      puts "2. Je veux afficher tous les potins"
-      puts "3. Je veux supprimer un potin "
-      puts "4. Je veux quitter le project"
+      string_chiader("Quest-ce que tu veut faire ?")
+      string_chiader("1. Je veux créer un gossip")
+      string_chiader ("2. Je veux afficher tous les potins")
+      string_chiader ("3. Je veux supprimer un potin ")
+      string_chiader("4. Je veux quitter le project")
       params = gets.chomp.to_i #on attend le choix de l'utilisateur
 
       case params #en fonction du choix
       when 1
-        puts "Tu as choisi de créer un gossip"
+        string_chiader("Tu as choisi de créer un gossip")
         @controller.create_gossip
-        break
+
       when 2
-        puts "Voici tous les potins"
+        string_chiader("Voici tous les potins")
         @controller.index_gossips
-        break
+
       when 3
-        puts "Quel potin veux-tu supprimer ?"
+        string_chiader("Quel potin veux-tu supprimer ?")
         @controller.index_gossips
         @controller.destroy_gossips
-        break
+
+
       when 4
-        puts "À bientôt !"
+        string_chiader ("À bientôt !")
         break #ce "break" permet de sortir de la boucle while. C'est même la seule façon d'en sortir.
 
       else
-        puts "Ce choix n'existe pas, merci de réessayer" #si l'utilisateur saisit une entrée non prévue, il retourne au début du "while true". C'est pour ça que la boucle est infinie: potentiellement, il peut se gourer jusqu'à la fin des temps :)
+        string_chiader ("Ce choix n'existe pas, merci de réessayer") #si l'utilisateur saisit une entrée non prévue, il retourne au début du "while true". C'est pour ça que la boucle est infinie: potentiellement, il peut se gourer jusqu'à la fin des temps :)
       end
     end
   end

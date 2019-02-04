@@ -22,7 +22,7 @@ class Controller
   def destroy_gossips
     reply = @view.destroy_gossips
     @@destroy_gossip = Gossip.destroy(reply)
-    puts @@destroy_gossip
+    
   end
 
 end
